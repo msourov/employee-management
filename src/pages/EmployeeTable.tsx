@@ -54,24 +54,27 @@ const EmployeeTable = () => {
   });
 
   return (
-    <Box className="w-[95%] mx-auto p-4">
-      <Box className="flex justify-between items-center mb-4 space-x-4">
-        <TextInput
-          placeholder="Search by name, email, or phone"
-          leftSection={<IconSearch size={18} />}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-[50%]"
-        />
-        <Select
-          placeholder="Filter by Department"
-          leftSection={<IconFilter size={18} />}
-          data={departments}
-          value={filterDepartment} // Bind to filterDepartment state
-          onChange={setFilterDepartment}
-          clearable
-          className="w-[30%]"
-        />
+    <Box className="w-full lg:w-[95%] mx-auto p-4">
+      <Box className="flex flex-wrap gap-2 justify-between items-center mb-4 space-x-4">
+        <div className="flex flex-col md:flex-row justify-left gap-6">
+          <TextInput
+            placeholder="Search by name, email, or phone"
+            leftSection={<IconSearch size={18} />}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="md:w-[50%]"
+          />
+          <Select
+            placeholder="Filter by Department"
+            leftSection={<IconFilter size={18} />}
+            data={departments}
+            value={filterDepartment}
+            onChange={setFilterDepartment}
+            clearable
+            className="md:w-[50%]"
+          />
+        </div>
+
         <Button
           leftSection={<IconPlus size={18} />}
           variant="gradient"
@@ -81,12 +84,12 @@ const EmployeeTable = () => {
             open();
           }}
           radius="md"
+          className="mt-6 md:mt-0"
         >
           Add Employee
         </Button>
       </Box>
 
-      {/* Employee Table */}
       <Table
         striped
         highlightOnHover
@@ -97,7 +100,6 @@ const EmployeeTable = () => {
             : "bg-gradient-to-r from-blue-100 to-indigo-100 shadow-lg rounded-lg overflow-hidden"
         }`}
       >
-        {/* Table Head */}
         <Table.Thead
           className={`${isDarkMode ? "bg-gray-800" : "bg-blue-100"}`}
         >
@@ -109,7 +111,6 @@ const EmployeeTable = () => {
           </Table.Tr>
         </Table.Thead>
 
-        {/* Table Body */}
         <Table.Tbody>
           {filteredEmployees.length > 0 ? (
             filteredEmployees.map((emp) => (

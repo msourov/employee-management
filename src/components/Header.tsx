@@ -19,7 +19,11 @@ const AppHeader = ({ opened, toggle }: AppHeaderProps) => {
       h="100%"
       p="md"
       justify="space-between"
-      style={{ backgroundColor: "#4F5D75" }}
+      style={{
+        background: "linear-gradient(90deg, #2C3E50 0%, #34495E 100%)",
+        borderBottom: "2px solid #ddd",
+        boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+      }}
     >
       <Group>
         <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
